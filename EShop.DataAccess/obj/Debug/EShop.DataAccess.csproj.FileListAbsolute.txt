@@ -1,0 +1,5 @@
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.DataAccess\bin\Debug\EShop.DataAccess.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.DataAccess\bin\Debug\EShop.DataAccess.pdb
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.DataAccess\obj\Debug\EShop.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.DataAccess\obj\Debug\EShop.DataAccess.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.DataAccess\obj\Debug\EShop.DataAccess.pdb
