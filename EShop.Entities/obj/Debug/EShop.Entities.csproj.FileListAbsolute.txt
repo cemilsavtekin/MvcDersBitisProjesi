@@ -1,1 +1,9 @@
-C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EShop.Entities.dll.config
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EShop.Entities.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EShop.Entities.pdb
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EntityFramework.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EntityFramework.xml
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.pdb
