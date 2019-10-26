@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MvcEShopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdresDetay" Type="varchar" MaxLength="500" />
+          <Property Name="AdresTipId" Type="int" />
+        </EntityType>
+        <EntityType Name="AdresTip">
+          <Key>
+            <PropertyRef Name="AdresTipID" />
+          </Key>
+          <Property Name="AdresTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdresTip" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="varchar" MaxLength="50" />
+          <Property Name="UstKategoriID" Type="int" />
+          <Property Name="SiraNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Kisiler">
+          <Key>
+            <PropertyRef Name="KisiID" />
+          </Key>
+          <Property Name="KisiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Soyad" Type="varchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="Telefon" Type="varchar" MaxLength="50" />
+          <Property Name="AdresID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="KisiID" Type="int" />
+          <Property Name="RolID" Type="int" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolAdi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KisiID" Type="int" />
+          <Property Name="OnayDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="SepetDetay">
+          <Key>
+            <PropertyRef Name="SepetDetayID" />
+          </Key>
+          <Property Name="SepetDetayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunID" Type="int" />
+          <Property Name="SepetID" Type="int" />
+          <Property Name="Adet" Type="int" />
+        </EntityType>
+        <EntityType Name="Siparis">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SepetID" Type="int" />
+          <Property Name="SiparisTarihi" Type="datetime" />
+          <Property Name="TeslimTarihi" Type="datetime" />
+          <Property Name="TeslimDurumu" Type="bit" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAdi" Type="varchar" MaxLength="50" />
+          <Property Name="UrunAciklamasi" Type="varchar" MaxLength="500" />
+          <Property Name="Fiyat" Type="money" />
+          <Property Name="KategoriID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Adres_AdresTip">
+          <End Role="AdresTip" Type="Self.AdresTip" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresTip">
+              <PropertyRef Name="AdresTipID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="AdresTipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kisiler_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Kisiler">
+              <PropertyRef Name="AdresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Kisiler">
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="0..1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kisiler">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sepet_Kisiler">
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kisiler">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SepetDetay_Sepet">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="0..1" />
+          <End Role="SepetDetay" Type="Self.SepetDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="SepetDetay">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SepetDetay_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="SepetDetay" Type="Self.SepetDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="SepetDetay">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Sepet">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urun_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urun">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MvcEShopDBModelStoreContainer">
+          <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdresTip" EntityType="Self.AdresTip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kisiler" EntityType="Self.Kisiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sepet" EntityType="Self.Sepet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SepetDetay" EntityType="Self.SepetDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Siparis" EntityType="Self.Siparis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adres_AdresTip" Association="Self.FK_Adres_AdresTip">
+            <End Role="AdresTip" EntitySet="AdresTip" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kisiler_Adres" Association="Self.FK_Kisiler_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Kisiler" EntitySet="Kisiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Kisiler" Association="Self.FK_Kullanici_Kisiler">
+            <End Role="Kisiler" EntitySet="Kisiler" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="Self.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sepet_Kisiler" Association="Self.FK_Sepet_Kisiler">
+            <End Role="Kisiler" EntitySet="Kisiler" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SepetDetay_Sepet" Association="Self.FK_SepetDetay_Sepet">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="SepetDetay" EntitySet="SepetDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SepetDetay_Urun" Association="Self.FK_SepetDetay_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="SepetDetay" EntitySet="SepetDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Sepet" Association="Self.FK_Siparis_Sepet">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urun" EntitySet="Urun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MvcEShopDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adres">
+          <Key>
+            <PropertyRef Name="AdresID" />
+          </Key>
+          <Property Name="AdresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdresDetay" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AdresTipId" Type="Int32" />
+          <NavigationProperty Name="AdresTip" Relationship="Self.FK_Adres_AdresTip" FromRole="Adres" ToRole="AdresTip" />
+          <NavigationProperty Name="Kisiler" Relationship="Self.FK_Kisiler_Adres" FromRole="Adres" ToRole="Kisiler" />
+        </EntityType>
+        <EntityType Name="AdresTip">
+          <Key>
+            <PropertyRef Name="AdresTipID" />
+          </Key>
+          <Property Name="AdresTipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdresTip1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Adres_AdresTip" FromRole="AdresTip" ToRole="Adres" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriID" />
+          </Key>
+          <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UstKategoriID" Type="Int32" />
+          <Property Name="SiraNo" Type="Int32" />
+          <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Kategori" FromRole="Kategori" ToRole="Urun" />
+        </EntityType>
+        <EntityType Name="Kisiler">
+          <Key>
+            <PropertyRef Name="KisiID" />
+          </Key>
+          <Property Name="KisiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdresID" Type="Int32" />
+          <NavigationProperty Name="Adres" Relationship="Self.FK_Kisiler_Adres" FromRole="Kisiler" ToRole="Adres" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Kullanici_Kisiler" FromRole="Kisiler" ToRole="Kullanici" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK_Sepet_Kisiler" FromRole="Kisiler" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KisiID" Type="Int32" />
+          <Property Name="RolID" Type="Int32" />
+          <NavigationProperty Name="Kisiler" Relationship="Self.FK_Kullanici_Kisiler" FromRole="Kullanici" ToRole="Kisiler" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_Kullanici_Rol" FromRole="Kullanici" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolID" />
+          </Key>
+          <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kullanici" Relationship="Self.FK_Kullanici_Rol" FromRole="Rol" ToRole="Kullanici" />
+        </EntityType>
+        <EntityType Name="Sepet">
+          <Key>
+            <PropertyRef Name="SepetID" />
+          </Key>
+          <Property Name="SepetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KisiID" Type="Int32" />
+          <Property Name="OnayDurumu" Type="Boolean" />
+          <NavigationProperty Name="Kisiler" Relationship="Self.FK_Sepet_Kisiler" FromRole="Sepet" ToRole="Kisiler" />
+          <NavigationProperty Name="SepetDetay" Relationship="Self.FK_SepetDetay_Sepet" FromRole="Sepet" ToRole="SepetDetay" />
+          <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Sepet" FromRole="Sepet" ToRole="Siparis" />
+        </EntityType>
+        <EntityType Name="SepetDetay">
+          <Key>
+            <PropertyRef Name="SepetDetayID" />
+          </Key>
+          <Property Name="SepetDetayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunID" Type="Int32" />
+          <Property Name="SepetID" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK_SepetDetay_Sepet" FromRole="SepetDetay" ToRole="Sepet" />
+          <NavigationProperty Name="Urun" Relationship="Self.FK_SepetDetay_Urun" FromRole="SepetDetay" ToRole="Urun" />
+        </EntityType>
+        <EntityType Name="Siparis">
+          <Key>
+            <PropertyRef Name="SiparisID" />
+          </Key>
+          <Property Name="SiparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SepetID" Type="Int32" />
+          <Property Name="SiparisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="TeslimDurumu" Type="Boolean" />
+          <NavigationProperty Name="Sepet" Relationship="Self.FK_Siparis_Sepet" FromRole="Siparis" ToRole="Sepet" />
+        </EntityType>
+        <EntityType Name="Urun">
+          <Key>
+            <PropertyRef Name="UrunID" />
+          </Key>
+          <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UrunAciklamasi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Fiyat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="KategoriID" Type="Int32" />
+          <NavigationProperty Name="Kategori" Relationship="Self.FK_Urun_Kategori" FromRole="Urun" ToRole="Kategori" />
+          <NavigationProperty Name="SepetDetay" Relationship="Self.FK_SepetDetay_Urun" FromRole="Urun" ToRole="SepetDetay" />
+        </EntityType>
+        <Association Name="FK_Adres_AdresTip">
+          <End Role="AdresTip" Type="Self.AdresTip" Multiplicity="0..1" />
+          <End Role="Adres" Type="Self.Adres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresTip">
+              <PropertyRef Name="AdresTipID" />
+            </Principal>
+            <Dependent Role="Adres">
+              <PropertyRef Name="AdresTipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kisiler_Adres">
+          <End Role="Adres" Type="Self.Adres" Multiplicity="0..1" />
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adres">
+              <PropertyRef Name="AdresID" />
+            </Principal>
+            <Dependent Role="Kisiler">
+              <PropertyRef Name="AdresID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Urun_Kategori">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+          <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriID" />
+            </Principal>
+            <Dependent Role="Urun">
+              <PropertyRef Name="KategoriID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Kisiler">
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="0..1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kisiler">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sepet_Kisiler">
+          <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="0..1" />
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kisiler">
+              <PropertyRef Name="KisiID" />
+            </Principal>
+            <Dependent Role="Sepet">
+              <PropertyRef Name="KisiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanici_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolID" />
+            </Principal>
+            <Dependent Role="Kullanici">
+              <PropertyRef Name="RolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SepetDetay_Sepet">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="0..1" />
+          <End Role="SepetDetay" Type="Self.SepetDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="SepetDetay">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Siparis_Sepet">
+          <End Role="Sepet" Type="Self.Sepet" Multiplicity="0..1" />
+          <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sepet">
+              <PropertyRef Name="SepetID" />
+            </Principal>
+            <Dependent Role="Siparis">
+              <PropertyRef Name="SepetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SepetDetay_Urun">
+          <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+          <End Role="SepetDetay" Type="Self.SepetDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urun">
+              <PropertyRef Name="UrunID" />
+            </Principal>
+            <Dependent Role="SepetDetay">
+              <PropertyRef Name="UrunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adres" EntityType="Self.Adres" />
+          <EntitySet Name="AdresTip" EntityType="Self.AdresTip" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+          <EntitySet Name="Kisiler" EntityType="Self.Kisiler" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="Sepet" EntityType="Self.Sepet" />
+          <EntitySet Name="SepetDetay" EntityType="Self.SepetDetay" />
+          <EntitySet Name="Siparis" EntityType="Self.Siparis" />
+          <EntitySet Name="Urun" EntityType="Self.Urun" />
+          <AssociationSet Name="FK_Adres_AdresTip" Association="Self.FK_Adres_AdresTip">
+            <End Role="AdresTip" EntitySet="AdresTip" />
+            <End Role="Adres" EntitySet="Adres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kisiler_Adres" Association="Self.FK_Kisiler_Adres">
+            <End Role="Adres" EntitySet="Adres" />
+            <End Role="Kisiler" EntitySet="Kisiler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="Urun" EntitySet="Urun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Kisiler" Association="Self.FK_Kullanici_Kisiler">
+            <End Role="Kisiler" EntitySet="Kisiler" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sepet_Kisiler" Association="Self.FK_Sepet_Kisiler">
+            <End Role="Kisiler" EntitySet="Kisiler" />
+            <End Role="Sepet" EntitySet="Sepet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanici_Rol" Association="Self.FK_Kullanici_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Kullanici" EntitySet="Kullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SepetDetay_Sepet" Association="Self.FK_SepetDetay_Sepet">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="SepetDetay" EntitySet="SepetDetay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Siparis_Sepet" Association="Self.FK_Siparis_Sepet">
+            <End Role="Sepet" EntitySet="Sepet" />
+            <End Role="Siparis" EntitySet="Siparis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SepetDetay_Urun" Association="Self.FK_SepetDetay_Urun">
+            <End Role="Urun" EntitySet="Urun" />
+            <End Role="SepetDetay" EntitySet="SepetDetay" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MvcEShopDBModelStoreContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Adres">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Adres">
+              <MappingFragment StoreEntitySet="Adres">
+                <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+                <ScalarProperty Name="AdresDetay" ColumnName="AdresDetay" />
+                <ScalarProperty Name="AdresTipId" ColumnName="AdresTipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdresTip">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.AdresTip">
+              <MappingFragment StoreEntitySet="AdresTip">
+                <ScalarProperty Name="AdresTipID" ColumnName="AdresTipID" />
+                <ScalarProperty Name="AdresTip1" ColumnName="AdresTip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="UstKategoriID" ColumnName="UstKategoriID" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kisiler">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Kisiler">
+              <MappingFragment StoreEntitySet="Kisiler">
+                <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="AdresID" ColumnName="AdresID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RolID" ColumnName="RolID" />
+                <ScalarProperty Name="RolAdi" ColumnName="RolAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sepet">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Sepet">
+              <MappingFragment StoreEntitySet="Sepet">
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="KisiID" ColumnName="KisiID" />
+                <ScalarProperty Name="OnayDurumu" ColumnName="OnayDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SepetDetay">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.SepetDetay">
+              <MappingFragment StoreEntitySet="SepetDetay">
+                <ScalarProperty Name="SepetDetayID" ColumnName="SepetDetayID" />
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Siparis">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Siparis">
+              <MappingFragment StoreEntitySet="Siparis">
+                <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+                <ScalarProperty Name="SepetID" ColumnName="SepetID" />
+                <ScalarProperty Name="SiparisTarihi" ColumnName="SiparisTarihi" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="TeslimDurumu" ColumnName="TeslimDurumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urun">
+            <EntityTypeMapping TypeName="MvcEShopDBModel.Urun">
+              <MappingFragment StoreEntitySet="Urun">
+                <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="UrunAciklamasi" ColumnName="UrunAciklamasi" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
