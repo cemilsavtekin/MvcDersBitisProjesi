@@ -1,7 +1,16 @@
-﻿
+﻿@model List<EShop.Entities.Urun>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            @item.UrunAdi
+        </div>
+    }
+   
+</div>

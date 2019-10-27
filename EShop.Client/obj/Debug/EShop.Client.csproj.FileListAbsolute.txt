@@ -44,3 +44,5 @@ C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\bin
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\obj\Debug\EShop.Client.csprojResolveAssemblyReference.cache
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\obj\Debug\EShop.Client.dll
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\obj\Debug\EShop.Client.pdb
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\bin\EShop.Entities.dll
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Client\bin\EShop.Entities.pdb

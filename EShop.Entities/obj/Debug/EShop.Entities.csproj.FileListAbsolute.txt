@@ -7,3 +7,4 @@ C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\b
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.dll
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.pdb
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Entities\obj\Debug\EShop.Entities.csprojResolveAssemblyReference.cache
