@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EShop.DataAccess\EShop.DataAccess.csproj">
+      <Project>{F5C6B91B-32C1-41A4-8648-190A385EC89E}</Project>
+      <Name>EShop.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EShop.Entities\EShop.Entities.csproj">
+      <Project>{B0F1F52A-0E65-4A4E-A820-551D83D26241}</Project>
+      <Name>EShop.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
