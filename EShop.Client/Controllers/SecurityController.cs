@@ -31,5 +31,11 @@ namespace EShop.Client.Controllers
 
             return new HttpUnauthorizedResult();
         }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

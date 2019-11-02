@@ -11,14 +11,32 @@ namespace EShop.Client.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        [Authorize(Roles ="Admin,User")]
+      
         public ActionResult Index()
         {
           
             return View();
         }
-        [Authorize(Roles ="User")]
+       
         public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Shop()
+        {
+            return View();
+        }
+
+        public ActionResult ProductDetail(int? id)
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult Cart()
         {
             return View();
         }
