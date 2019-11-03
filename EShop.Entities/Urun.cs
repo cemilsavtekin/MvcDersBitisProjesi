@@ -17,6 +17,7 @@ namespace EShop.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Urun()
         {
+            this.Resim = new HashSet<Resim>();
             this.SepetDetay = new HashSet<SepetDetay>();
         }
     
@@ -27,6 +28,8 @@ namespace EShop.Entities
         public Nullable<int> KategoriID { get; set; }
     
         public virtual Kategori Kategori { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Resim> Resim { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SepetDetay> SepetDetay { get; set; }
     }

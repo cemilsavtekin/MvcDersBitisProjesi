@@ -1,4 +1,4 @@
-﻿
+﻿@model List<EShop.Client.Models.ViewModels.ProductView>
 @{
     ViewBag.Title = "Shop";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -44,18 +44,22 @@
                     </div>
                 </div>
                 <div class="row mb-5">
-                    <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                        <div class="block-4 text-center border">
-                            <figure class="block-4-image">
-                                <a href="shop-single.html"><img src="~/images/cloth_1.jpg" alt="Image placeholder" class="img-fluid"></a>
-                            </figure>
-                            <div class="block-4-text p-4">
-                                <h3><a href="shop-single.html">Tank Top</a></h3>
-                                <p class="mb-0">Finding perfect t-shirt</p>
-                                <p class="text-primary font-weight-bold">$50</p>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="block-4 text-center border">
+                                <figure class="block-4-image">
+                                    <a href="/Home/ProductDetail?id=@item.UrunID"><img src="@item.ResimUrl" alt="Image placeholder" class="img-fluid"></a>
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3><a href="/Home/ProductDetail?id=@item.UrunID">@item.UrunAdi</a></h3>
+                                    <p class="mb-0">@(item.UrunAciklamasi.Substring(0,30)+"...")</p>
+                                    <p class="text-primary font-weight-bold">@item.Fiyat ₺</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+
                     <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                         <div class="block-4 text-center border">
                             <figure class="block-4-image">

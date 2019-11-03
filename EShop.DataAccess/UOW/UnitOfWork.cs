@@ -25,7 +25,7 @@ namespace EShop.DataAccess.UOW
             return _dbContext.SaveChanges();
         }
 
-        public IRepository<T> GetRepository<T>() where T : class, new()
+        public Repository<T> GetRepository<T>() where T : class, new()
         {
             return new Repository<T>(_dbContext);
         }

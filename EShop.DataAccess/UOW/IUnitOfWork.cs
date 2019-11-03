@@ -9,7 +9,7 @@ namespace EShop.DataAccess.UOW
 {
     public interface IUnitOfWork
     {
-        IRepository<T> GetRepository<T>() where T : class, new();
+        Repository<T> GetRepository<T>() where T : class, new();
         int Commit();
     }
 }

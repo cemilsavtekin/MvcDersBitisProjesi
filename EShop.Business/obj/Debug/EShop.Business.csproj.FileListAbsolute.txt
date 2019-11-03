@@ -1,6 +1,5 @@
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.Business.dll
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.Business.pdb
-C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.csprojResolveAssemblyReference.cache
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.dll
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.pdb
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.DataAccess.dll
@@ -8,3 +7,7 @@ C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\b
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EntityFramework.dll
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.DataAccess.pdb
 C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.Entities.pdb
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\bin\Debug\EShop.Entities.dll.config
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.csprojAssemblyReference.cache
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.csproj.CoreCompileInputs.cache
+C:\Users\Zümra\Desktop\405 ders uygulamaları\087_BitisProjesi\EShop.Business\obj\Debug\EShop.Business.csproj.CopyComplete

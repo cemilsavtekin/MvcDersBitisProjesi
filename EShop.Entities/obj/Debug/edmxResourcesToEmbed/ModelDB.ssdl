@@ -45,6 +45,14 @@
     <Property Name="KisiID" Type="int" />
     <Property Name="RolID" Type="int" />
   </EntityType>
+  <EntityType Name="Resim">
+    <Key>
+      <PropertyRef Name="ResimID" />
+    </Key>
+    <Property Name="ResimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResimUrl" Type="varchar" MaxLength="350" />
+    <Property Name="UrunID" Type="int" />
+  </EntityType>
   <EntityType Name="Rol">
     <Key>
       <PropertyRef Name="RolID" />
@@ -137,6 +145,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Resim_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="Resim" Type="Self.Resim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Resim">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sepet_Kisiler">
     <End Role="Kisiler" Type="Self.Kisiler" Multiplicity="0..1" />
     <End Role="Sepet" Type="Self.Sepet" Multiplicity="*" />
@@ -203,6 +223,7 @@
     <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kisiler" EntityType="Self.Kisiler" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Resim" EntityType="Self.Resim" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sepet" EntityType="Self.Sepet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SepetDetay" EntityType="Self.SepetDetay" Schema="dbo" store:Type="Tables" />
@@ -223,6 +244,10 @@
     <AssociationSet Name="FK_Kullanici_Rol" Association="Self.FK_Kullanici_Rol">
       <End Role="Rol" EntitySet="Rol" />
       <End Role="Kullanici" EntitySet="Kullanici" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Resim_Urun" Association="Self.FK_Resim_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Resim" EntitySet="Resim" />
     </AssociationSet>
     <AssociationSet Name="FK_Sepet_Kisiler" Association="Self.FK_Sepet_Kisiler">
       <End Role="Kisiler" EntitySet="Kisiler" />

@@ -5,25 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d29449c6630449929102152ea0de36d8" Name="Diagram1">
-        <EntityTypeShape EntityType="MvcEShopDBModel.Adres" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.AdresTip" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Kategori" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Kisiler" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Kullanici" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Rol" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Sepet" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.SepetDetay" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Siparis" Width="1.5" PointX="9.75" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcEShopDBModel.Urun" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Adres_AdresTip" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Kisiler_Adres" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Urun_Kategori" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Kullanici_Kisiler" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Sepet_Kisiler" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Kullanici_Rol" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_SepetDetay_Sepet" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_Siparis_Sepet" ManuallyRouted="false" />
-        <AssociationConnector Association="MvcEShopDBModel.FK_SepetDetay_Urun" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Adres" Width="1.5" PointX="1.5" PointY="11.375" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.AdresTip" Width="1.5" PointX="1.5" PointY="14.625" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Kategori" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Kisiler" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Kullanici" Width="1.5" PointX="4" PointY="11.25" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Resim" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Rol" Width="1.5" PointX="1.75" PointY="17.625" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Sepet" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.SepetDetay" Width="1.5" PointX="5.25" PointY="2.375" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Siparis" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="MvcEShopDBModel.Urun" Width="1.5" PointX="3" PointY="2.125" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Adres_AdresTip" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Kisiler_Adres" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Urun_Kategori" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Kullanici_Kisiler" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Sepet_Kisiler" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Kullanici_Rol" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Resim_Urun" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_SepetDetay_Sepet" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_Siparis_Sepet" />
+        <AssociationConnector Association="MvcEShopDBModel.FK_SepetDetay_Urun" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

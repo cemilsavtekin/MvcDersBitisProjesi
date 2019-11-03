@@ -82,6 +82,9 @@
       <DependentUpon>ModelDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resim.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Rol.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>

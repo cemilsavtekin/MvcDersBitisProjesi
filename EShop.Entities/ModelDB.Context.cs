@@ -30,6 +30,7 @@ namespace EShop.Entities
         public virtual DbSet<Kategori> Kategori { get; set; }
         public virtual DbSet<Kisiler> Kisiler { get; set; }
         public virtual DbSet<Kullanici> Kullanici { get; set; }
+        public virtual DbSet<Resim> Resim { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<Sepet> Sepet { get; set; }
         public virtual DbSet<SepetDetay> SepetDetay { get; set; }
