@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using EShop.Client.Controllers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -49,11 +50,10 @@
                                     <li>
                                         <a href="/Home/Cart" class="site-cart">
                                             <span class="icon icon-shopping_cart"></span>
-                                            @if (HttpContext.Current.User.Identity.IsAuthenticated)
-	                                        {
-                                            <span class="count">@HttpContext.Current.Response.Cookies["sepetAdet"].Value</span>
-	                                        }   
-                                            
+
+                                            <span id="sepetUrunSayisi" class="count"></span>
+
+
                                         </a>
                                     </li>
                                     <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
@@ -83,7 +83,7 @@
                             </ul>
                         </li>
                         <li class="has-children">
-                            @Html.ActionLink("About","About")
+                            @Html.ActionLink("About", "About")
                             <ul class="dropdown">
                                 <li><a href="#">Menu One</a></li>
                                 <li><a href="#">Menu Two</a></li>
@@ -186,5 +186,17 @@
     <script src="~/scripts/js/aos.js"></script>
     <script src="~/scripts/js/main.js"></script>
     <script src="~/scripts/Utils.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+            Utils_js.AjaxPost("/Home/GetCartCount", null, false, function (donen) {
+                debugger;
+                $("#sepetUrunSayisi").html(donen.data);
+            }, function () { });
+        })
+    </script>
+
+
 </body>
 </html>

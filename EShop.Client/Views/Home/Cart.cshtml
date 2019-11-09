@@ -1,8 +1,11 @@
-﻿
+﻿@model List<EShop.Client.Models.ViewModels.SepetView>
 @{
     ViewBag.Title = "Cart";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+
 
 <div class="bg-light py-3">
     <div class="container">
@@ -16,7 +19,7 @@
         <div class="row mb-5">
             <form class="col-md-12" method="post">
                 <div class="site-blocks-table">
-                    <table class="table table-bordered">
+                    <table id="urunler" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th class="product-thumbnail">Image</th>
@@ -28,50 +31,55 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <img src="~/images/cloth_1.jpg" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">Top Up T-Shirt</h2>
-                                </td>
-                                <td>$49.00</td>
-                                <td>
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <img src="@item.ResimUrl" alt="Image" class="img-fluid">
+                                    </td>
+                                    <td class="product-name" data-sepetdetayid="@item.SepetDetayID" data-sepetid="@item.SepetID">
+                                        <h2 class="h5 text-black"  >@item.UrunAdi</h2>
+                                    </td>
+                                    <td>@item.Fiyat ₺</td>
+                                    <td>
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center adet" value="@item.Adet" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                            </div>
                                         </div>
-                                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                    </td>
+                                    <td>@item.ToplamFiyat</td>
+                                    <td><button onclick="urunSil(this)" class="btn btn-primary btn-sm">X</button></td>
+                                </tr>
+                            }
+
+
+                            @*<tr>
+                                    <td class="product-thumbnail">
+                                        <img src="~/images/cloth_2.jpg" alt="Image" class="img-fluid">
+                                    </td>
+                                    <td class="product-name">
+                                        <h2 class="h5 text-black">Polo Shirt</h2>
+                                    </td>
+                                    <td>$49.00</td>
+                                    <td>
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                            </div>
+                                            <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>$49.00</td>
-                                <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                            </tr>
-                            <tr>
-                                <td class="product-thumbnail">
-                                    <img src="~/images/cloth_2.jpg" alt="Image" class="img-fluid">
-                                </td>
-                                <td class="product-name">
-                                    <h2 class="h5 text-black">Polo Shirt</h2>
-                                </td>
-                                <td>$49.00</td>
-                                <td>
-                                    <div class="input-group mb-3" style="max-width: 120px;">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                                        </div>
-                                        <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>$49.00</td>
-                                <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                            </tr>
+                                    </td>
+                                    <td>$49.00</td>
+                                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                                </tr>*@
                         </tbody>
                     </table>
                 </div>
@@ -81,7 +89,7 @@
             <div class="col-md-6">
                 <div class="row mb-5">
                     <div class="col-md-6 mb-3 mb-md-0">
-                        <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
+                        <button id="sepetGuncelle" class="btn btn-primary btn-sm btn-block">Güncelle</button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
@@ -135,3 +143,35 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts{
+
+    <script>
+                $("#sepetGuncelle").click(function () {
+             debugger;
+                    var rows = $("#urunler").find("tr");
+                    var _data = [];
+                    for (var i = 0; i < rows.length; i++) {
+                        if ($(rows[i]).find(".adet").length > 0) {
+                            var sepetDetayID = $(rows[i]).find(".product-name").data("sepetdetayid");
+                            var sepetID = $(rows[i]).find(".product-name").data("sepetid");
+                            var d = { sepetDetayID: sepetDetayID, adet: $("#urunler").find("tr").find(".adet").val(), SepetID: sepetID };
+                            _data.push(d);
+                        }
+                        
+                    }
+                    var params = { sepetViews: _data };
+                    debugger;
+                    Utils_js.AjaxPost("/Home/SepetGuncelle", JSON.stringify(params), false, function (data) {
+                       debugger;
+                    }, function () { })
+
+
+        })
+        function urunSil(btn) {
+            $(btn).closest("tr").remove();
+        }
+
+    </script>
+}
