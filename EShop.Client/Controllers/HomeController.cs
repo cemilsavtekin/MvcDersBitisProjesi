@@ -16,7 +16,7 @@ namespace EShop.Client.Controllers
         // GET: Home
 
         public JsonResult GetCartCount()
-        {
+        { 
 
             var kisiID = HttpContext.User.Identity.IsAuthenticated == true ? DBHelper<Kullanici>.GetEntity(x => x.KullaniciAdi == HttpContext.User.Identity.Name).KisiID : 0;
 
